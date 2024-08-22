@@ -4,23 +4,23 @@ This project is a RESTful API built with Node.js, Express, and MongoDB. It inclu
 ## Prerequisites
 Before you begin, ensure you have the following installed on your system:
 
-# Node.js (version 14 or higher)
-# MongoDB (for local database)
-# Postman (for testing API endpoints)
+ 1. Node.js (version 14 or higher)
+ 2. MongoDB (for local database)
+ 3. Postman (for testing API endpoints)
 
 ## Installation
-# Clone the Repository
+1. Clone the Repository
 
 git clone <repository-url>
 cd <project-directory>
 
-# Install Dependencies
+2. Install Dependencies
 
 Install the project dependencies using npm:
 
 npm install
 
-# Configure Environment Variables
+3. Configure Environment Variables
 
 Create a .env file in the root directory of the project and add the following configuration:
 
@@ -29,13 +29,13 @@ MONGO_URI=mongodb://localhost:27017/your-database-name
 JWT_SECRET=your-secret-key
 Replace your-database-name with the name of your MongoDB database and your-secret-key with a secret key for JWT.
 
-# Start the MongoDB Server
+4. Start the MongoDB Server
 
 Ensure your MongoDB server is running. If you are using a local MongoDB instance, you can start it with:
 
 mongod
 
-# Run the API Server
+5. Run the API Server
 
 Start the API server with:
 
@@ -46,8 +46,9 @@ The server should now be running on http://localhost:5000 (or any other port spe
 ## API Endpoints
 You can test the following endpoints using Postman:
 
-## User Endpoints
-# Register User:-
+## User Endpoints:-
+
+1. Register User:-
 
 Method: POST
 URL: http://localhost:5000/api/auth/register
@@ -59,7 +60,7 @@ Body (JSON):
   "password": "yourpassword"
 }
 
-# Login User:-
+2. Login User:-
 
 Method: POST
 
@@ -90,7 +91,7 @@ Response (JSON):
 
 
 ## Task Endpoints
-# Create Task:- 
+1. Create Task:- 
 
 Method: POST
 URL: http://localhost:5000/api/tasks
@@ -103,14 +104,14 @@ Body (JSON):
   "description": "Task description"
 }
 
-# Get All Tasks:- 
+2. Get All Tasks:- 
 
 Method: GET
 URL: http://localhost:5000/api/tasks
 Headers:
 Authorization: Bearer <jwt-token>
 
-# Update Task:-
+3. Update Task:-
 
 Method: PUT
 URL: http://localhost:5000/api/tasks/:id
@@ -124,7 +125,7 @@ Body (JSON):
   "status": "completed"
 }
 
-# Delete Task:-
+4. Delete Task:-
 
 Method: DELETE
 URL: http://localhost:5000/api/tasks/:id
