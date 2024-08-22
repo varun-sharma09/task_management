@@ -40,13 +40,21 @@ const updateTask = async (req, res) => {
       return res.status(400).json({ code: 400, status: 'Error', message: error.details[0].message });
     }
 
+    // Check if the task exists
+    const task = await Task.findById(id);
+    if (!task) {
+      return res.status(404).json({ code: 404, status: 'Error', message: 'Task ID not found' });
+    }
+
+    // Update the task
     const { title, description, status } = req.body;
-    const task = await Task.findByIdAndUpdate(
+    const updatedTask = await Task.findByIdAndUpdate(
       id,
       { title, description, status },
       { new: true }
     );
-    res.json({ code: 200, status: 'Success', data: task });
+
+    res.json({ code: 200, status: 'Success', data: updatedTask });
   } catch (err) {
     res.status(500).json({ code: 500, status: 'Error', message: err.message });
   }
