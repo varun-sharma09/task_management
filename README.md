@@ -10,38 +10,44 @@ Before you begin, ensure you have the following installed on your system:
 
 ## Installation
 1. Clone the Repository
-
-git clone <repository-url>
-cd <project-directory>
+    ```bash
+    git clone <repository-url>
+    cd <project-directory>
+    ```
 
 2. Install Dependencies
 
-Install the project dependencies using npm:
-
-npm install
-
+    Install the project dependencies using npm:
+      ```bash
+      npm install
+      ```
 3. Configure Environment Variables
 
-Create a .env file in the root directory of the project and add the following configuration:
+    Create a .env file in the root directory of the project and add the following configuration:
+    ```bash
+    PORT=5000
 
-PORT=5000
-MONGO_URI=mongodb://localhost:27017/your-database-name
-JWT_SECRET=your-secret-key
-Replace your-database-name with the name of your MongoDB database and your-secret-key with a secret key for JWT.
+    MONGO_URI=mongodb://localhost:27017/your-database-name
+
+    JWT_SECRET=your-secret-key
+    ```
+
+    Replace your-database-name with the name of your MongoDB database and your-secret-key with a secret key for JWT.
 
 4. Start the MongoDB Server
 
-Ensure your MongoDB server is running. If you are using a local MongoDB instance, you can start it with:
-
-mongod
+    Ensure your MongoDB server is running. If you are using a local MongoDB instance, you can start it with:
+    ```bash
+    mongod
+    ```
 
 5. Run the API Server
 
-Start the API server with:
-
-npm run dev
-
-The server should now be running on http://localhost:5000 (or any other port specified in the .env file).
+    Start the API server with:
+    ```bash
+    npm run dev
+    ```
+    The server should now be running on http://localhost:5000 (or any other port specified in the .env file).
 
 ## API Endpoints
 You can test the following endpoints using Postman:
@@ -49,88 +55,77 @@ You can test the following endpoints using Postman:
 ## User Endpoints:-
 
 1. Register User:-
+    ```bash
+    Method: POST
+    URL: http://localhost:5000/api/auth/register
+    Body (JSON):
 
-Method: POST
-URL: http://localhost:5000/api/auth/register
-Body (JSON):
-
-{
-  "username": "exampleUser",
-  "email": "user@example.com",
-  "password": "yourpassword"
-}
-
-2. Login User:-
-
-Method: POST
-
-URL: http://localhost:5000/api/auth/login
-
-Body (JSON):
-
-{
-  "email": "user@example.com",
-  "password": "yourpassword"
-}
-Response (JSON):
-
-{
-  "code": 200,
-  "status": "Success",
-  "message": "Login successful",
-  "data": {
-    "user": {
+    {
       "username": "exampleUser",
       "email": "user@example.com",
-      "password": "hashedpassword",
-      "_id": "user-id"
-    },
-    "token": "jwt-token"
-  }
-}
+      "password": "yourpassword"
+    }
+    ```
+    
+2. Login User:-
+    ```bash
+    Method: POST
 
+    URL: http://localhost:5000/api/auth/login
+
+    Body (JSON):
+
+    {
+      "email": "user@example.com",
+      "password": "yourpassword"
+    }
+    ```
 
 ## Task Endpoints
 1. Create Task:- 
+    ```bash
+    Method: POST
+    URL: http://localhost:5000/api/tasks
+    Headers:
+    Authorization: Bearer <jwt-token>
+    Body (JSON):
 
-Method: POST
-URL: http://localhost:5000/api/tasks
-Headers:
-Authorization: Bearer <jwt-token>
-Body (JSON):
-
-{
-  "title": "New Task",
-  "description": "Task description"
-}
+    {
+      "title": "New Task",
+      "description": "Task description"
+    }
+    ```
 
 2. Get All Tasks:- 
-
-Method: GET
-URL: http://localhost:5000/api/tasks
-Headers:
-Authorization: Bearer <jwt-token>
+    ```bash
+    Method: GET
+    URL: http://localhost:5000/api/tasks
+    Headers:
+    Authorization: Bearer <jwt-token>
+    ```
 
 3. Update Task:-
+    ```bash
+    Method: PUT
+    URL: http://localhost:5000/api/tasks/:id
+    Headers:
+    Authorization: Bearer <jwt-token>
+    Body (JSON):
 
-Method: PUT
-URL: http://localhost:5000/api/tasks/:id
-Headers:
-Authorization: Bearer <jwt-token>
-Body (JSON):
-
-{
-  "title": "Updated Task",
-  "description": "Updated description",
-  "status": "completed"
-}
+    {
+      "title": "Updated Task",
+      "description": "Updated description",
+      "status": "completed"
+    }
+    ```
 
 4. Delete Task:-
-
-Method: DELETE
-URL: http://localhost:5000/api/tasks/:id
-Headers:
-Authorization: Bearer <jwt-token>
+    ```bash
+    Method: DELETE
+    URL: http://localhost:5000/api/tasks/:id
+    Headers:
+    Authorization: Bearer <jwt-token>
+    ```
 
 ## Testing
 You can use Postman to test the API endpoints by:
